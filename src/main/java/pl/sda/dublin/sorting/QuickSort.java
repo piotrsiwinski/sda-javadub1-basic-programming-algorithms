@@ -19,6 +19,7 @@ public class QuickSort {
 
     // 4 - static
     private static void quicksort(int low, int high) {
+        // tworzymy zmienne pomocnicze, tak by zapamietac gdzie rozpoczelismy przechodzenie po tablicach
         int i = low;
         int j = high;
 
