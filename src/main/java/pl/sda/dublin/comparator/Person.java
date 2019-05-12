@@ -15,10 +15,22 @@ public class Person implements Comparable<Person> {
 
     @Override
     public int compareTo(Person otherPerson) {
+        // 1. porownywanie po nazwisku:
 //        return this.surname.compareTo(otherPerson.surname);
-        return otherPerson.surname.compareTo(this.surname);
 
-        // napisz compareTo dla imion (alfabetycznie) oraz dla wieku (uwaga: typ int)
+
+        // 2. po wieku (I wersja)
+        if(this.age < otherPerson.age){
+            return -1;
+        } else if (this.age == otherPerson.age){
+            return 0;
+        }else {
+            return 1;
+        }
+
+        // 3. po wieku 2 wersja - bardziej elegacnka: mozemy rowniez wykorzystac metode z klasy Integer:
+//        return Integer.compare(this.age, otherPerson.age);
+
     }
 
     public String getName() {
