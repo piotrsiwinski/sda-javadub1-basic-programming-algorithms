@@ -21,16 +21,25 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     private void insert(T nowaWartosc, Node<T> node) {
         // jesli dane mniejsze od aktualnego wezla to wstawiamy w lewe poddrzewo
         // idziemy w lewe poddrzewo
+        // pierwszy if obsluguje lewe poddrzewo
+        // w pozostalych przypadkach (rowny, badz wiekszy) wstawiamy w prawe poddrzewo
         if (nowaWartosc.compareTo(node.getData()) < 0) {
             if (node.getLeft() == null) {
                 // sprawdzamy czy node jest lisciem
                 // jesli lisc to wstawiamy w jego lewe poddrzewo
                 // nie ma juz lewego poddrzewa - tutaj wstawiamy
-                Node newNode = new Node<T>(nowaWartosc);
+                Node<T> newNode = new Node<>(nowaWartosc);
                 node.setLeft(newNode);
             } else {
                 // wezel nie jest lisciem, czyli rekurencyjnie wywolujemy funkcje insert z lewym wezlem
                 insert(nowaWartosc, node.getLeft());
+            }
+        } else {
+            if (node.getRight() == null) {
+                Node<T> newNode = new Node<>(nowaWartosc);
+                node.setRight(newNode);
+            } else {
+                insert(nowaWartosc, node.getRight());
             }
         }
     }
