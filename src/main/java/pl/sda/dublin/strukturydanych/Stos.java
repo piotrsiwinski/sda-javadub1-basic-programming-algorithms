@@ -1,6 +1,8 @@
 package pl.sda.dublin.strukturydanych;
 
-public class Stos<E> {
+import pl.sda.dublin.comparator.Person;
+
+public class Stos<E extends Person> {
 
   private int index = 0;
   private Object[] elements;
@@ -10,6 +12,8 @@ public class Stos<E> {
   }
 
   public void push(E element) {
+
+
     // wyrzuć wyjątek - wypisac komunikat, ze stos pelny
     // jezeli index jest mniejszy od dlugosci tablicy - to mozemy wstawic nowy element
     // sprawdzamy, czy stos nie jest pelny

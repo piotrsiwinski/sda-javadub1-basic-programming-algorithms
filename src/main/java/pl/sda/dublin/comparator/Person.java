@@ -1,6 +1,6 @@
 package pl.sda.dublin.comparator;
 
-public class Person {
+public class Person implements Comparable<Person> {
 
     private String name;
     private String surname;
@@ -10,6 +10,15 @@ public class Person {
         this.name = name;
         this.surname = surname;
         this.age = age;
+    }
+
+
+    @Override
+    public int compareTo(Person otherPerson) {
+//        return this.surname.compareTo(otherPerson.surname);
+        return otherPerson.surname.compareTo(this.surname);
+
+        // napisz compareTo dla imion (alfabetycznie) oraz dla wieku (uwaga: typ int)
     }
 
     public String getName() {
@@ -34,6 +43,15 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
 
