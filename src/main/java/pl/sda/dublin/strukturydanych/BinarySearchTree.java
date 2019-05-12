@@ -52,7 +52,30 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     @Override
     public T getMax() {
-        return null;
+        if (root == null) {
+            // puste drzewo
+            return null;
+        }
+        // jesli korzen nie ma prawego syna to zwroc wartosc z korzenia
+        // w przeciwnym wpyadku wywolaj rekurencyjnie funkcję ponizej
+        if (root.getRight() == null) {
+            // korzen nie ma prawego poddrzewa - czyli jest najwiekszym elementem
+            return root.getData();
+            // ??
+        } else {
+            // prawe poddrzewo istnieje, wiec musimy zejsc poziom nizej w drzewie
+            // ?
+            return getMax(root.getRight());
+        }
+
+    }
+
+    private T getMax(Node<T> node) {
+        if (node.getRight() == null) {
+            // nie ma juz wiekszego elementu
+            return node.getData();
+        }
+        return getMax(node.getRight());
     }
 
     @Override
@@ -67,6 +90,26 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     @Override
     public void traversal() {
+        if (root != null) {
+            inorderTraversal(root);
+        }
+    }
+
+    private void inorderTraversal(Node<T> node) {
+        // odwiedz lewego syna
+        if (node.getLeft() != null) {
+            inorderTraversal(node.getLeft());
+        }
+
+        // wypisz wartosc wezla
+        System.out.print(node.getData() + " ");
+
+        // odwiedz prawego syna
+        if (node.getRight() != null) {
+            inorderTraversal(node.getRight());
+        }
 
     }
+
+
 }
