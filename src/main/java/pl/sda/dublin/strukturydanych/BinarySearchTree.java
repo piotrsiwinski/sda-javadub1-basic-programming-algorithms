@@ -111,5 +111,21 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     }
 
+    private void preorderTraversal(Node<T> element) {
+        // odwiedz element
+        System.out.print(element.getData() + " ");
+
+        // odwiedz lewe poddrzewo
+        if (element.getLeft() != null) {
+            preorderTraversal(element.getLeft());
+        }
+
+        // odwiedz prawe poddrzewo
+
+        if (element.getRight() != null) {
+            preorderTraversal(element.getRight());
+        }
+    }
+
 
 }
